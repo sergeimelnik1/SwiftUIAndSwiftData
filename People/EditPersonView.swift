@@ -8,12 +8,15 @@
 import PhotosUI
 import SwiftData
 import SwiftUI
+import Combine
 
 struct EditPersonView: View {
     @Environment(\.modelContext) var modelContext
     @Bindable var person: Person
     @Binding var navigationPath: NavigationPath
     @State private var selectedItem: PhotosPickerItem?
+    @State private var cancellables = Set<AnyCancellable>() // Для хранения подписок
+    @State private var pageOpenedPublisher = PassthroughSubject<Void, Never>() // Publisher для события открытия страницы
 
     @Query(sort: [
         SortDescriptor(\Event.name),
@@ -30,15 +33,15 @@ struct EditPersonView: View {
                 }
 
                 PhotosPicker(selection: $selectedItem, matching: .images) {
-                    Label("Select a photo", systemImage: "person")
+                    Label("Выбрать фото", systemImage: "person")
                 }
             }
 
             Section {
-                TextField("Name", text: $person.name)
+                TextField("ФИО", text: $person.name)
                     .textContentType(.name)
 
-                TextField("Email address", text: $person.emailAddress)
+                TextField("Email", text: $person.emailAddress)
                     .textContentType(.emailAddress)
                     .textInputAutocapitalization(.never)
             }
@@ -60,17 +63,37 @@ struct EditPersonView: View {
 
                 Button("Add a new event", action: addEvent)
             }
+            
+            TextField("Телефон", text: $person.phone)
+                .textContentType(.telephoneNumber)
+                .textInputAutocapitalization(.never)
 
-            Section("Notes") {
-                TextField("Details about this person", text: $person.details, axis: .vertical)
+
+            Section("Заметки") {
+                TextField("Детали о человеке", text: $person.details, axis: .vertical)
+            }
+            Section("Статистика открытия страницы") {
+                Text("Количество открытий: \(person.countOpened)")
             }
         }
-        .navigationTitle("Edit Person")
+        .navigationTitle("Изменить человека")
         .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(for: Event.self) { event in
             EditEventView(event: event)
         }
         .onChange(of: selectedItem, loadPhoto)
+        .onAppear {
+            // При появлении экрана, отправляем событие через publisher
+            pageOpenedPublisher.send()
+        }
+        .onReceive(pageOpenedPublisher) { _ in
+            // Увеличиваем countOpened каждый раз при открытии страницы
+            person.countOpened += 1
+        }
+        .onDisappear {
+            // Можно остановить подписку или выполнить другие действия при исчезновении экрана
+            cancellables.removeAll()
+        }
     }
 
     func addEvent() {
@@ -86,13 +109,13 @@ struct EditPersonView: View {
     }
 }
 
-#Preview {
-    do {
-        let previewer = try Previewer()
-
-        return EditPersonView(person: previewer.person, navigationPath: .constant(NavigationPath()))
-            .modelContainer(previewer.container)
-    } catch {
-        return Text("Failed to create preview: \(error.localizedDescription)")
-    }
-}
+//#Preview {
+//    do {
+//        let previewer = try MockDataForPreview()
+//
+//        return EditPersonView(person: previewer.person, navigationPath: .constant(NavigationPath()))
+//            .modelContainer(previewer.container)
+//    } catch {
+//        return Text("Failed to create preview: \(error.localizedDescription)")
+//    }
+//}

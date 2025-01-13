@@ -12,17 +12,17 @@ struct EditEventView: View {
 
     var body: some View {
         Form {
-            TextField("Name of event", text: $event.name)
-            TextField("Location", text: $event.location)
+            TextField("Название события", text: $event.name)
+            TextField("Локация", text: $event.location)
         }
-        .navigationTitle("Edit Event")
+        .navigationTitle("Изменить событие")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
     do {
-        let previewer = try Previewer()
+        let previewer = try MockDataForPreview()
 
         return EditEventView(event: previewer.event)
             .modelContainer(previewer.container)

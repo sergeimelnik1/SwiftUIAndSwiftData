@@ -14,33 +14,33 @@ struct ContentView: View {
 
     @State private var sortOrder = [SortDescriptor(\Person.name)]
     @State private var searchText = ""
-//https://www.hackingwithswift.com/articles/263/build-your-first-app-with-swiftui-and-swiftdata
+    
     var body: some View {
         NavigationStack(path: $path) {
             PeopleView(searchString: searchText, sortOrder: sortOrder)
-                .navigationTitle("People")
+                .navigationTitle("Контакты")
                 .navigationDestination(for: Person.self) { person in
                     EditPersonView(person: person, navigationPath: $path)
                 }
                 .toolbar {
                     Menu("Sort", systemImage: "arrow.up.arrow.down") {
                         Picker("Sort", selection: $sortOrder) {
-                            Text("Name (A-Z)")
+                            Text("ФИО (А-Я)")
                                 .tag([SortDescriptor(\Person.name)])
 
-                            Text("Name (Z-A)")
+                            Text("ФИО (Я-А)")
                                 .tag([SortDescriptor(\Person.name, order: .reverse)])
                         }
                     }
 
-                    Button("Add Person", systemImage: "plus", action: addPerson)
+                    Button("Добавить человека", systemImage: "plus", action: addPerson)
                 }
                 .searchable(text: $searchText)
         }
     }
 
     func addPerson() {
-        let person = Person(name: "", emailAddress: "", details: "")
+        let person = Person(name: "", emailAddress: "", phone: "", details: "")
         modelContext.insert(person)
         path.append(person)
     }
@@ -48,7 +48,7 @@ struct ContentView: View {
 
 #Preview {
     do {
-        let previewer = try Previewer()
+        let previewer = try MockDataForPreview()
 
         return ContentView()
             .modelContainer(previewer.container)

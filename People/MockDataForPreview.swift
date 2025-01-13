@@ -1,5 +1,5 @@
 //
-//  Previewer.swift
+//  MockDataForPreview.swift
 //  People
 //
 //  Created by Melnik Sergey on 22/06/2024.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @MainActor
-struct Previewer {
+struct MockDataForPreview {
     let container: ModelContainer
     let event: Event
     let person: Person
@@ -18,8 +18,8 @@ struct Previewer {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         container = try ModelContainer(for: Person.self, configurations: config)
 
-        event = Event(name: "Dimension Jump", location: "Nottingham")
-        person = Person(name: "Dave Lister", emailAddress: "dave@reddwarf.com", details: "", metAt: event)
+        event = Event(name: "Офис МКБ", location: "Тверь")
+        person = Person(name: "Сергей Мельник", emailAddress: "melniksv@mkb.ru", phone: "+79969235544", details: "Какое-то описание контакта", metAt: event)
 
         container.mainContext.insert(person)
     }

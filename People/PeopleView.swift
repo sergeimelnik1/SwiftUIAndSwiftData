@@ -45,7 +45,7 @@ struct PeopleView: View {
 
 #Preview {
     do {
-        let previewer = try Previewer()
+        let previewer = try MockDataForPreview()
 
         return PeopleView()
             .modelContainer(previewer.container)

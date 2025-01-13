@@ -16,7 +16,7 @@
 		51F3F9D22B3602EB00E1D1A1 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3F9D12B3602EB00E1D1A1 /* PeopleView.swift */; };
 		51F3F9D42B3608F600E1D1A1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3F9D32B3608F600E1D1A1 /* Event.swift */; };
 		51F3F9D62B360A5300E1D1A1 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3F9D52B360A5300E1D1A1 /* EditEventView.swift */; };
-		51F3F9D82B360F3000E1D1A1 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3F9D72B360F3000E1D1A1 /* Previewer.swift */; };
+		51F3F9D82B360F3000E1D1A1 /* MockDataForPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3F9D72B360F3000E1D1A1 /* MockDataForPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,7 @@
 		51F3F9D12B3602EB00E1D1A1 /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
 		51F3F9D32B3608F600E1D1A1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		51F3F9D52B360A5300E1D1A1 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
-		51F3F9D72B360F3000E1D1A1 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
+		51F3F9D72B360F3000E1D1A1 /* MockDataForPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataForPreview.swift; sourceTree = "<group>"; };
 		51F3F9D92B36147300E1D1A1 /* People.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = People.entitlements; sourceTree = "<group>"; };
 		51F3F9DA2B3614BF00E1D1A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84E11D8F2CC6F3E600AA77FD /* People.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = People.entitlements; path = People/People.entitlements; sourceTree = SOURCE_ROOT; };
@@ -72,7 +72,7 @@
 				51F3F9C12B35F98500E1D1A1 /* ContentView.swift */,
 				51F3F9D12B3602EB00E1D1A1 /* PeopleView.swift */,
 				51F3F9CF2B35FCCB00E1D1A1 /* EditPersonView.swift */,
-				51F3F9D72B360F3000E1D1A1 /* Previewer.swift */,
+				51F3F9D72B360F3000E1D1A1 /* MockDataForPreview.swift */,
 				51F3F9CD2B35F9F700E1D1A1 /* Person.swift */,
 				51F3F9D52B360A5300E1D1A1 /* EditEventView.swift */,
 				51F3F9D32B3608F600E1D1A1 /* Event.swift */,
@@ -164,7 +164,7 @@
 				51F3F9CE2B35F9F700E1D1A1 /* Person.swift in Sources */,
 				51F3F9D22B3602EB00E1D1A1 /* PeopleView.swift in Sources */,
 				51F3F9C22B35F98500E1D1A1 /* ContentView.swift in Sources */,
-				51F3F9D82B360F3000E1D1A1 /* Previewer.swift in Sources */,
+				51F3F9D82B360F3000E1D1A1 /* MockDataForPreview.swift in Sources */,
 				51F3F9C02B35F98500E1D1A1 /* PeopleApp.swift in Sources */,
 				51F3F9D42B3608F600E1D1A1 /* Event.swift in Sources */,
 				51F3F9D02B35FCCB00E1D1A1 /* EditPersonView.swift in Sources */,
