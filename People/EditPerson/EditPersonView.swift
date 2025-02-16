@@ -109,13 +109,13 @@ struct EditPersonView: View {
     }
 }
 
-//#Preview {
-//    do {
-//        let previewer = try MockDataForPreview()
-//
-//        return EditPersonView(person: previewer.person, navigationPath: .constant(NavigationPath()))
-//            .modelContainer(previewer.container)
-//    } catch {
-//        return Text("Failed to create preview: \(error.localizedDescription)")
-//    }
-//}
+#Preview {
+    do {
+        let previewer = try MockDataForPreview()
+
+        return EditPersonView(person: previewer.person, navigationPath: .constant(NavigationPath()))
+            .modelContainer(previewer.container)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
+    }
+}
