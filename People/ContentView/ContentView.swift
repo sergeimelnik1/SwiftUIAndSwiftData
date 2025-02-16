@@ -12,13 +12,14 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject private var router = PeopleRouter()
     @StateObject private var viewModel = PeopleViewModel()
+    @StateObject private var editPersonRouter = EditPersonRouter()
 
     var body: some View {
         NavigationStack(path: $router.path) {
             PeopleView(searchString: viewModel.searchText, sortOrder: viewModel.sortOrder)
                 .navigationTitle("Контакты")
                 .navigationDestination(for: Person.self) { person in
-                    EditPersonView(person: person, navigationPath: $router.path)
+                    EditPersonView(viewModel: EditPersonViewModel(person: person, modelContext: modelContext, router: editPersonRouter), router: editPersonRouter)
                 }
                 .toolbar {
                     Menu("Sort", systemImage: "arrow.up.arrow.down") {
@@ -39,13 +40,13 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    do {
-        let previewer = try MockDataForPreview()
-
-        return ContentView()
-            .modelContainer(previewer.container)
-    } catch {
-        return Text("Failed to create preview: \(error.localizedDescription)")
-    }
-}
+//#Preview {
+//    do {
+//        let previewer = try MockDataForPreview()
+//
+//        return ContentView()
+//            .modelContainer(previewer.container)
+//    } catch {
+//        return Text("Failed to create preview: \(error.localizedDescription)")
+//    }
+//}
