@@ -94,9 +94,6 @@ struct EditPersonView: View {
                         Text(viewModel.person.details.isEmpty ? "Добавить заметки" : viewModel.person.details)
                             .foregroundStyle(viewModel.person.details.isEmpty ? .secondary : .primary)
                             .multilineTextAlignment(.leading)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundStyle(.secondary)
                     }
                     
                     Text("Символов: \(viewModel.notesCharacterCount)")
