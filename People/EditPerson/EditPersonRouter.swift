@@ -8,9 +8,11 @@
 import SwiftUI
 
 final class EditPersonRouter: ObservableObject {
-    @Published var navigationPath = NavigationPath()
-
-    func navigateToEditEvent(_ event: Event) {
-        navigationPath.append(event)
+    @Published var path = NavigationPath()
+    @Published var tempNotes: String = ""
+    
+    func navigateToNotes(currentNotes: String) {
+        tempNotes = currentNotes
+        path.append("notes")
     }
 }

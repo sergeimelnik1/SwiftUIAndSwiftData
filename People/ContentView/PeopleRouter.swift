@@ -13,8 +13,4 @@ final class PeopleRouter: ObservableObject {
     func navigateToEditPerson(_ person: Person) {
         path.append(person)
     }
-
-    func popToRoot() {
-        path = NavigationPath()
-    }
 }

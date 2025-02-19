@@ -11,15 +11,13 @@ import SwiftData
 @MainActor
 struct MockDataForPreview {
     let container: ModelContainer
-    let event: Event
     let person: Person
 
     init() throws {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         container = try ModelContainer(for: Person.self, configurations: config)
 
-        event = Event(name: "Офис МКБ", location: "Тверь")
-        person = Person(name: "Сергей Мельник", emailAddress: "melniksv@mkb.ru", phone: "+79969235544", details: "Какое-то описание контакта", metAt: event)
+        person = Person(name: "Сергей Мельник", emailAddress: "melniksv@mkb.ru", phone: "+79969235544", details: "Какое-то описание контакта")
 
         container.mainContext.insert(person)
     }
